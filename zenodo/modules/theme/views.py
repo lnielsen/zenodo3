@@ -34,3 +34,4 @@ blueprint = Blueprint(
     template_folder='templates',
     static_folder='static',
 )
+"""Theme blueprint used to define template and static folders."""

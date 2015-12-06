@@ -26,6 +26,7 @@
 
 from __future__ import absolute_import, print_function
 
+from . import config
 from .views import blueprint
 
 
@@ -45,3 +46,6 @@ class ZenodoRecords(object):
 
     def init_config(self, app):
         """Initialize configuration."""
+        for k in dir(config):
+            if k.startswith('ZENODO_'):
+                app.config.setdefault(k, getattr(config, k))

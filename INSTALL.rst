@@ -1,33 +1,33 @@
 Installation
 ============
 
-First install Zenodo all requirements:
+The easiest way to get started with Zenodo is using the provided docker image.
+First checkout the source code, build all docker images and boot them up
+using Docker Compose:
 
 .. code-block:: console
 
-   $ mkvirtualenv zenodo3
-   (zenodo3)$ pip install -r requirements.txt --pre --src ~/src/ --exists-action i
-   (zenodo3)$ pip install -e .[postgresql]
+    $ git clone https://github.com/zenodo/zenodo.git
+    $ git checkout next
+    $ docker-compose build
+    $ docker-compose up
 
 
-Next, install and build assets:
-
-.. code-block:: console
-
-   (zenodo3)$ zenodo npm
-   (zenodo3)$ cdvirtualenv var/zenodo-instance/static
-   (zenodo3)$ npm install
-   (zenodo3)$ zenodo collect -v
-   (zenodo3)$ zenodo assets build
-
-
-Next, create the database and database tables if you haven't already done so:
+Next, create the database and an admin user:
 
 .. code-block:: console
 
-   (zenodo3)$ zenodo db init
-   (zenodo3)$ zenodo db create
+    $ docker-compose run web zenodo db init
+    $ docker-compose run web zenodo db create
+    $ docker-compose run web zenodo users create -e info@zenodo.org -a
 
-Now, start Zenodo:
 
-   (zenodo3)$ zenodo --debug run
+Now visit the following URL in your browser:
+
+.. code-block:: console
+
+    http://<docker ip>:5000
+
+**Dependencies**
+
+Zenodo depends on PostgreSQL, Elasticsearch , Redis and RabbitMQ.

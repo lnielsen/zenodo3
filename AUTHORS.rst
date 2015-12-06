@@ -22,21 +22,38 @@
     as an Intergovernmental Organization or submit itself to any jurisdiction.
 
 
-Authors
+Credits
 =======
 
-Zenodo - Research. Shared.
+* **Project Executive:**
 
- * Lars Holm Nielsen
- * Samuele Kaplun
- * Adrian Pawel Baran
- * Odd Magnus Trondrud
- * Bruno Cuc
- * Krzysztof Nowak
- * Amit Kapadia
- * João Gonçalves
- * Jiri Kuncar
- * Esteban J. G. Gabancho
- * Dan Blanchard
- * Dimitrios Semitsoglou-Tsiapos
- * Tibor Simko
+  * Tim Smith
+
+* **Project Lead:**
+
+  * Lars Holm Nielsen
+
+* **Project Advisors:**
+
+  * Chris Erdmann
+  * Tibor Simko
+
+* **Developers:**
+
+  * Adrian Pawel Baran
+  * Amit Kapadia
+  * Bruno Cuc
+  * Dan Blanchard
+  * Dimitrios Semitsoglou-Tsiapos
+  * Esteban J. G. Gabancho
+  * Jiri Kuncar
+  * João Gonçalves
+  * Krzysztof Nowak
+  * Odd Magnus Trondrud
+  * Samuele Kaplun
+
+* **Funders**:
+
+  * European Commission through Horizon 2020 (OpenAIRE2020, grant agreement
+    no. 194062) and FP7 (OpenAIRE, grant agreement no. 246686 + OpenAIREplus, grant agreement no. 283595).
+  * CERN

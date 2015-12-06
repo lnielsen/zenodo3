@@ -39,3 +39,7 @@ a.text-white:focus,
 a.text-white:hover {
   color: $text-white;
 }
+
+h4, h5 {
+    font-weight: $headings45-font-weight;
+}

@@ -22,9 +22,9 @@
     as an Intergovernmental Organization or submit itself to any jurisdiction.
 
 
-API Docs
-========
-
-zenodo
-------
+Base Configuration
+------------------
+.. automodule:: zenodo.config
+   :members:
+   :undoc-members:
 

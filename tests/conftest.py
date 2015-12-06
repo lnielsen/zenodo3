@@ -27,4 +27,62 @@
 
 from __future__ import absolute_import, print_function
 
+import os
+import shutil
+import tempfile
+
 import pytest
+from invenio_db import db as db_
+from sqlalchemy_utils.functions import create_database, database_exists, \
+    drop_database
+
+from zenodo.factory import create_app
+
+
+@pytest.yield_fixture(scope='session', autouse=True)
+def app(request):
+    """Flask application fixture."""
+    instance_path = tempfile.mkdtemp()
+
+    os.environ.update(
+        APP_INSTANCE_PATH=os.environ.get(
+            'INSTANCE_PATH', instance_path),
+    )
+
+    app = create_app(
+        SQLALCHEMY_DATABASE_URI=os.environ.get(
+            'SQLALCHEMY_DATABASE_URI', 'sqlite:///test.db'),
+        TESTING=True,
+    )
+
+    def teardown():
+        shutil.rmtree(instance_path)
+
+    request.addfinalizer(teardown)
+
+    with app.app_context():
+        yield app
+
+
+@pytest.yield_fixture(scope='session')
+def database(app):
+    """Ensure that the database schema is created."""
+    if not database_exists(str(db_.engine.url)):
+        create_database(str(db_.engine.url))
+    db_.drop_all()
+    db_.create_all()
+
+    yield db_
+
+    drop_database(str(db_.engine.url))
+
+
+@pytest.yield_fixture
+def db(database, monkeypatch):
+    """Provide database access and ensure changes do not persist."""
+    # Prevent database/session modifications
+    monkeypatch.setattr(database.session, 'commit', database.session.flush)
+    monkeypatch.setattr(database.session, 'remove', lambda: None)
+    yield database
+    database.session.rollback()
+    database.session.remove()

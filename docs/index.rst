@@ -23,9 +23,14 @@
 
 
 .. include:: ../README.rst
+   :end-before: Powered by Invenio
 
-User's Guide
-------------
+**Powered by Invenio**: Zenodo is a small layer on top of
+`Invenio <http://invenio-software.org>`_, a free software suite enabling you
+to run your own ​digital repository on the web.
+
+Developers's Guide
+------------------
 
 This part of the documentation will show you how to get started in using
 Invenio-Base.
@@ -36,7 +41,6 @@ Invenio-Base.
    installation
    usage
 
-
 API Reference
 -------------
 
@@ -46,7 +50,22 @@ this part of the documentation is for you.
 .. toctree::
    :maxdepth: 2
 
-   api
+   api/applications
+   api/config
+   api/records
+   api/theme
+
+Project documentation
+---------------------
+
+This part of the documentation describes Zenodo project management and
+development processes.
+
+.. toctree::
+   :maxdepth: 2
+
+   development
+   projectlifecycle
 
 Additional Notes
 ----------------
@@ -61,3 +80,16 @@ interested.
    changes
    license
    authors
+
+Zenodo is funded by CERN and European Commission via OpenAIRE, OpenAIREPlus,
+OpenAIRE2020.
+
+.. note::
+   Zenodo (R) and the Zenodo logo are trademarked by CERN and are not covered
+   by the GPLv2 license. Thus, if you instantiate Zenodo on your own servers
+   you must change the branding to your own.
+
+   Please consider creating your own overlay to
+   `Invenio <http://invenio-software.org>`_ and look to Zenodo for inspiration.
+   We will be happy to help you get started, just contact us on
+   info@zenodo.org.

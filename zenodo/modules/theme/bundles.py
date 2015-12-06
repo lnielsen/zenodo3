@@ -40,6 +40,7 @@ css = NpmBundle(
         "font-awesome": "~4.4.0"
     }
 )
+"""Default CSS bundle."""
 
 js = NpmBundle(
     Bundle(
@@ -59,3 +60,4 @@ js = NpmBundle(
         "angular": "~1.4.7",
     }
 )
+"""Default JavaScript bundle."""

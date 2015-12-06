@@ -137,7 +137,11 @@ todo_include_todos = False
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'description': 'Zenodo - Research. Shared.',
+    'logo': 'zenodo-black-200.png',
+    'description': 'Zenodo, a CERN service, is an open dependable home for the'
+                   ' long-tail of science, enabling researchers to share and '
+                   'preserve any research outputs in any size, any format and '
+                   'from any science.',
     'github_user': 'inveniosoftware',
     'github_repo': 'zenodo',
     'github_button': False,
@@ -179,7 +183,7 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-#html_static_path = ['_static']
+html_static_path = ['_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied

@@ -74,6 +74,7 @@ install_requires = [
     # 'invenio-search-ui',
     'Flask-BabelEx>=0.9.2',
     'Flask-Debugtoolbar>=0.10.0',
+    'idutils>=0.1.1',
     'invenio-access',
     'invenio-accounts',
     'invenio-admin',
@@ -94,6 +95,7 @@ install_requires = [
     'invenio-theme',
     'invenio-userprofiles',
     'invenio>=3.0.0a1,<3.1.0',
+    'jsonref>=0.1',
     'zenodo-migrationkit',
 ]
 

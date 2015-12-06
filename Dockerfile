@@ -33,7 +33,7 @@ RUN npm update && npm install --silent -g node-sass clean-css uglify-js requirej
 RUN mkdir -p /usr/local/src/
 
 # Create instance/static folder
-ENV APP_INSTANCE_PATH /usr/local/var/invenio-instance/static/
+ENV APP_INSTANCE_PATH /usr/local/var/zenodo-instance
 RUN mkdir -p ${APP_INSTANCE_PATH}
 
 # Copy source code
@@ -41,7 +41,8 @@ COPY . /code
 WORKDIR /code
 
 # Install Zenodo
-RUN pip install -r requirements.txt --src /usr/local/src
+RUN pip install -r requirements.developer.txt --src /usr/local/src
+RUN pip install -e .[postgresql]
 RUN python -O -m compileall .
 
 # Slim down image
@@ -49,14 +50,14 @@ RUN rm -rf /tmp/* /var/tmp/* /var/lib/{cache,log}/ /root/.cache/*
 
 # Install bower dependencies and build assets.
 RUN zenodo npm
-WORKDIR ${APP_INSTANCE_PATH}
+WORKDIR ${APP_INSTANCE_PATH}/static
 RUN npm install
 WORKDIR /code
 RUN zenodo collect -v
 RUN zenodo assets build
 
 RUN adduser --uid 1000 --disabled-password --gecos '' zenodo
-RUN chown -R zenodo:zenodo /code /usr/local/var/invenio-instance
+RUN chown -R zenodo:zenodo /code ${APP_INSTANCE_PATH}
 
 VOLUME ["/code"]
 
